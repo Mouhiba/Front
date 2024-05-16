@@ -6,7 +6,7 @@ import { ADD_FILM, DELETE_FILM, FAIL_FILM, GET_FILMS, LOAD_FILM } from "../Actio
 export const addFilm =(newFilm)=>async(dispatch) =>{
     dispatch({type:LOAD_FILM})
     try {
-        let result = await axios.post('http://localhost:5000/api/film/addFilm', newFilm)
+        let result = await axios.post('https://backend-kfsl.onrender.com/api/film/addFilm', newFilm)
         dispatch({type:ADD_FILM, payload : result.data})
     } catch (error) {
         dispatch({type: FAIL_FILM, payload: error.response})
@@ -17,7 +17,7 @@ export const addFilm =(newFilm)=>async(dispatch) =>{
 export const getFilms =()=>async (dispatch) =>{
     dispatch({type:LOAD_FILM})
     try {
-        let result =await axios.get('http://localhost:5000/api/film/films')
+        let result =await axios.get('https://backend-kfsl.onrender.com/api/film/films')
         dispatch({type:GET_FILMS, payload: result.data})
     } catch (error) {
         dispatch({type:FAIL_FILM,payload:error.response})
@@ -28,7 +28,7 @@ export const getFilms =()=>async (dispatch) =>{
 export const deleteFilm =(id) =>async (dispatch)=>{
     dispatch({type:LOAD_FILM})
     try {
-       let result=await axios.delete(`http://localhost:5000/api/film/deleteFilm/${id}`)
+       let result=await axios.delete(`https://backend-kfsl.onrender.com/api/film/deleteFilm/${id}`)
         dispatch({type:DELETE_FILM,payload:result.data})
         
     } catch (error) {
